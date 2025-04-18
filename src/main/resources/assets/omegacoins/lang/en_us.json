@@ -1,0 +1,9 @@
+{
+  "item.omegacoins.copper_coin": "Copper Coin",
+  "item.omegacoins.iron_coin": "Iron Coin",
+  "item.omegacoins.gold_coin": "Gold Coin",
+  "item.omegacoins.diamond_coin": "Diamond Coin",
+  "item.omegacoins.netherite_coin": "Netherite Coin",
+
+  "creativetab.omegacoins.omegacoins_tab": "Omega Coins"
+}
