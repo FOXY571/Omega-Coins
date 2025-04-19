@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "omegacoins:block/diamond_coin_crate"
+    }
+  }
+}

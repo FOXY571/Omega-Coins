@@ -1,6 +1,7 @@
 package com.foxy_571.omegacoins.item;
 
 import com.foxy_571.omegacoins.OmegaCoins;
+import com.foxy_571.omegacoins.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -21,6 +22,12 @@ public class ModCreativeModeTabs {
             output.accept(ModItems.GOLD_COIN);
             output.accept(ModItems.DIAMOND_COIN);
             output.accept(ModItems.NETHERITE_COIN);
+
+            output.accept(ModBlocks.COPPER_COIN_CRATE);
+            output.accept(ModBlocks.IRON_COIN_CRATE);
+            output.accept(ModBlocks.GOLD_COIN_CRATE);
+            output.accept(ModBlocks.DIAMOND_COIN_CRATE);
+            output.accept(ModBlocks.NETHERITE_COIN_CRATE);
         }).build());
 
     public static void register(IEventBus eventBus) {

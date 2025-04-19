@@ -1,5 +1,6 @@
 package com.foxy_571.omegacoins;
 
+import com.foxy_571.omegacoins.block.ModBlocks;
 import com.foxy_571.omegacoins.item.ModCreativeModeTabs;
 import com.foxy_571.omegacoins.item.ModItems;
 import org.slf4j.Logger;
@@ -18,5 +19,6 @@ public class OmegaCoins {
     public OmegaCoins(IEventBus modEventBus, ModContainer modContainer) {
         ModCreativeModeTabs.register(modEventBus);
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
     }
 }

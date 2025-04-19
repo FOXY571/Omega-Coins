@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "omegacoins:block/copper_coin_crate"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "omegacoins:block/iron_coin_crate"
+    }
+  }
+}

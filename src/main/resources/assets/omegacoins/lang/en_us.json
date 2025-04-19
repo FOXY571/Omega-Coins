@@ -5,5 +5,11 @@
   "item.omegacoins.diamond_coin": "Diamond Coin",
   "item.omegacoins.netherite_coin": "Netherite Coin",
 
+  "block.omegacoins.copper_coin_crate": "Copper Coin Crate",
+  "block.omegacoins.iron_coin_crate": "Iron Coin Crate",
+  "block.omegacoins.gold_coin_crate": "Gold Coin Crate",
+  "block.omegacoins.diamond_coin_crate": "Diamond Coin Crate",
+  "block.omegacoins.netherite_coin_crate": "Netherite Coin Crate",
+
   "creativetab.omegacoins.omegacoins_tab": "Omega Coins"
 }

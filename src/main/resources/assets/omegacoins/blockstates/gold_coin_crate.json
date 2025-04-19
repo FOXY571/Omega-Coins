@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "omegacoins:block/gold_coin_crate"
+    }
+  }
+}
