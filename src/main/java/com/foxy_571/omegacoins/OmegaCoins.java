@@ -5,6 +5,7 @@ import com.foxy_571.omegacoins.block.entity.ModBlockEntities;
 import com.foxy_571.omegacoins.block.entity.renderer.CoinPressBlockEntityRenderer;
 import com.foxy_571.omegacoins.item.ModCreativeModeTabs;
 import com.foxy_571.omegacoins.item.ModItems;
+import com.foxy_571.omegacoins.recipes.ModRecipes;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -27,6 +28,7 @@ public class OmegaCoins {
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
+        ModRecipes.register(modEventBus);
     }
 
     @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)

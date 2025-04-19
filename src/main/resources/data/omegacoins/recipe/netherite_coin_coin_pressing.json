@@ -1,0 +1,9 @@
+{
+  "type": "omegacoins:coin_pressing",
+  "ingredient": {
+    "item": "minecraft:netherite_ingot"
+  },
+  "result": {
+    "id": "omegacoins:netherite_coin"
+  }
+}

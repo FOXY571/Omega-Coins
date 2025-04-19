@@ -1,0 +1,9 @@
+{
+  "type": "omegacoins:coin_pressing",
+  "ingredient": {
+    "item": "minecraft:iron_ingot"
+  },
+  "result": {
+    "id": "omegacoins:iron_coin"
+  }
+}

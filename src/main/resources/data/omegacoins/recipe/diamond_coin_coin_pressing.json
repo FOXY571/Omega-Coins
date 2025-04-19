@@ -1,0 +1,9 @@
+{
+  "type": "omegacoins:coin_pressing",
+  "ingredient": {
+    "item": "minecraft:diamond"
+  },
+  "result": {
+    "id": "omegacoins:diamond_coin"
+  }
+}
