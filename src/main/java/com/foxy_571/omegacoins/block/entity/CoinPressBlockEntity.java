@@ -4,10 +4,14 @@ import com.foxy_571.omegacoins.recipes.CoinPressRecipe;
 import com.foxy_571.omegacoins.recipes.ModRecipes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
@@ -53,6 +57,10 @@ public class CoinPressBlockEntity extends BlockEntity implements ContainerSingle
         }
 
         itemHandler.setStackInSlot(0, recipe.get().value().output());
+        level.playSound(null, getBlockPos(), SoundEvents.ANVIL_PLACE, SoundSource.BLOCKS);
+        if (level instanceof ServerLevel serverLevel) {
+            serverLevel.sendParticles(ParticleTypes.DUST_PLUME, getBlockPos().getX() + 0.5, getBlockPos().getY() + 1.2, getBlockPos().getZ() + 0.5, 7, 0.0, 0.0, 0.0, 0.0);
+        }
     }
 
     private Optional<RecipeHolder<CoinPressRecipe>> getCurrentRecipe() {
