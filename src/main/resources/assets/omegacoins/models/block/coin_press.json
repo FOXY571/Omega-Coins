@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "omegacoins:block/coin_press_side",
+    "side": "omegacoins:block/coin_press_side",
+    "top": "omegacoins:block/coin_press_top"
+  }
+}

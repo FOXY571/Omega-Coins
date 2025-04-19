@@ -28,6 +28,7 @@ public class ModCreativeModeTabs {
             output.accept(ModBlocks.GOLD_COIN_CRATE);
             output.accept(ModBlocks.DIAMOND_COIN_CRATE);
             output.accept(ModBlocks.NETHERITE_COIN_CRATE);
+            output.accept(ModBlocks.COIN_PRESS);
         }).build());
 
     public static void register(IEventBus eventBus) {
