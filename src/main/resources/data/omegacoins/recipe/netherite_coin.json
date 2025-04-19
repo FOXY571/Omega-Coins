@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "omegacoins:netherite_coin_crate"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "omegacoins:netherite_coin"
+  }
+}
