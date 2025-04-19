@@ -1,6 +1,5 @@
 package com.foxy_571.omegacoins.block.entity;
 
-import com.foxy_571.omegacoins.item.ModItems;
 import com.foxy_571.omegacoins.recipes.CoinPressRecipe;
 import com.foxy_571.omegacoins.recipes.ModRecipes;
 import net.minecraft.core.BlockPos;
@@ -16,20 +15,18 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.ticks.ContainerSingleItem;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
-public class CoinPressBlockEntity extends BlockEntity {
+public class CoinPressBlockEntity extends BlockEntity implements ContainerSingleItem.BlockContainerSingleItem {
     public final ItemStackHandler itemHandler = new ItemStackHandler(1) {
         @Override
         protected void onContentsChanged(int slot) {
-            setChanged();
-            if (!level.isClientSide()) {
-                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
-            }
+            callUpdated();
         }
     };
 
@@ -62,12 +59,31 @@ public class CoinPressBlockEntity extends BlockEntity {
         return level.getRecipeManager().getRecipeFor(ModRecipes.COIN_PRESS_RECIPE_TYPE.get(), new SingleRecipeInput(itemHandler.getStackInSlot(0)), level);
     }
 
-    public ItemStack getTheItem() {
+    @Override
+    public @NotNull ItemStack getTheItem() {
         return itemHandler.getStackInSlot(0);
     }
 
-    public void SetTheItem(ItemStack stack) {
-        itemHandler.setStackInSlot(0, stack);
+    @Override
+    public void setTheItem(@NotNull ItemStack itemStack) {
+        itemHandler.setStackInSlot(0, itemStack);
+    }
+
+    @Override
+    public @NotNull ItemStack splitTheItem(int amount) {
+        ItemStack itemStack = BlockContainerSingleItem.super.splitTheItem(amount);
+        callUpdated();
+        return itemStack;
+    }
+
+    @Override
+    public boolean canPlaceItem(int slot, @NotNull ItemStack stack) {
+        return isEmpty();
+    }
+
+    @Override
+    public @NotNull BlockEntity getContainerBlockEntity() {
+        return this;
     }
 
     public void drops() {
@@ -75,6 +91,13 @@ public class CoinPressBlockEntity extends BlockEntity {
         inventory.setItem(0, itemHandler.getStackInSlot(0));
 
         Containers.dropContents(level, worldPosition, inventory);
+    }
+
+    private void callUpdated() {
+        setChanged();
+        if (!level.isClientSide()) {
+            level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+        }
     }
 
     @Override

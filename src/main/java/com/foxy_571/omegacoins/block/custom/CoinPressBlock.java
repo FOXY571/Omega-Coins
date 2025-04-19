@@ -44,9 +44,9 @@ public class CoinPressBlock extends BaseEntityBlock {
                 ItemStack item = coinPressBlockEntity.getTheItem();
                 if (stack.isEmpty()) {
                     player.setItemInHand(hand, item);
-                    coinPressBlockEntity.SetTheItem(ItemStack.EMPTY);
+                    coinPressBlockEntity.setTheItem(ItemStack.EMPTY);
                 } else if (item.isEmpty()) {
-                    coinPressBlockEntity.SetTheItem(stack.consumeAndReturn(1, player));
+                    coinPressBlockEntity.setTheItem(stack.consumeAndReturn(1, player));
                     return ItemInteractionResult.CONSUME;
                 }
             }
