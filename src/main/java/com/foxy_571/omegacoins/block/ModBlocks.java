@@ -1,6 +1,7 @@
 package com.foxy_571.omegacoins.block;
 
 import com.foxy_571.omegacoins.OmegaCoins;
+import com.foxy_571.omegacoins.block.custom.CoinPressBlock;
 import com.foxy_571.omegacoins.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -22,6 +23,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> GOLD_COIN_CRATE =  registerBlock("gold_coin_crate", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).sound(SoundType.WOOD)));
     public static final DeferredBlock<Block> DIAMOND_COIN_CRATE =  registerBlock("diamond_coin_crate", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).sound(SoundType.WOOD)));
     public static final DeferredBlock<Block> NETHERITE_COIN_CRATE =  registerBlock("netherite_coin_crate", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).sound(SoundType.WOOD)));
+    public static final DeferredBlock<CoinPressBlock> COIN_PRESS = registerBlock("coin_press", () -> new CoinPressBlock(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.STONE)));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
