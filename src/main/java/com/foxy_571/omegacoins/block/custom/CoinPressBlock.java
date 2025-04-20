@@ -67,11 +67,13 @@ public class CoinPressBlock extends BaseEntityBlock {
 
     @Override
     protected @NotNull BlockState updateShape(@NotNull BlockState state, @NotNull Direction direction, @NotNull BlockState neighborState, @NotNull LevelAccessor level, @NotNull BlockPos pos, @NotNull BlockPos neighborPos) {
-        if (direction == Direction.UP && neighborState.getBlock() instanceof PistonHeadBlock) {
-            if (neighborState.getValue(PistonHeadBlock.FACING) == Direction.DOWN) {
-                BlockEntity blockEntity = level.getBlockEntity(pos);
-                if (blockEntity instanceof CoinPressBlockEntity coinPressBlockEntity) {
-                    coinPressBlockEntity.craftItem();
+        if (!level.isClientSide()) {
+            if (direction == Direction.UP && neighborState.getBlock() instanceof PistonHeadBlock) {
+                if (neighborState.getValue(PistonHeadBlock.FACING) == Direction.DOWN) {
+                    BlockEntity blockEntity = level.getBlockEntity(pos);
+                    if (blockEntity instanceof CoinPressBlockEntity coinPressBlockEntity) {
+                        coinPressBlockEntity.craftItem();
+                    }
                 }
             }
         }
@@ -106,20 +108,5 @@ public class CoinPressBlock extends BaseEntityBlock {
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING);
-    }
-
-    @Override
-    protected boolean hasAnalogOutputSignal(@NotNull BlockState state) {
-        return true;
-    }
-
-    @Override
-    protected int getAnalogOutputSignal(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos) {
-        BlockEntity blockEntity = level.getBlockEntity(pos);
-        if (blockEntity instanceof CoinPressBlockEntity coinPressBlockEntity) {
-            return coinPressBlockEntity.isEmpty() ? 0 : 15;
-        }
-
-        return 0;
     }
 }

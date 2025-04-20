@@ -19,14 +19,13 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.ticks.ContainerSingleItem;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
-public class CoinPressBlockEntity extends BlockEntity implements ContainerSingleItem.BlockContainerSingleItem {
+public class CoinPressBlockEntity extends BlockEntity {
     public final ItemStackHandler itemHandler = new ItemStackHandler(1) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -67,31 +66,12 @@ public class CoinPressBlockEntity extends BlockEntity implements ContainerSingle
         return level.getRecipeManager().getRecipeFor(ModRecipes.COIN_PRESS_RECIPE_TYPE.get(), new SingleRecipeInput(itemHandler.getStackInSlot(0)), level);
     }
 
-    @Override
     public @NotNull ItemStack getTheItem() {
         return itemHandler.getStackInSlot(0);
     }
 
-    @Override
     public void setTheItem(@NotNull ItemStack itemStack) {
         itemHandler.setStackInSlot(0, itemStack);
-    }
-
-    @Override
-    public @NotNull ItemStack splitTheItem(int amount) {
-        ItemStack itemStack = BlockContainerSingleItem.super.splitTheItem(amount);
-        callUpdated();
-        return itemStack;
-    }
-
-    @Override
-    public boolean canPlaceItem(int slot, @NotNull ItemStack stack) {
-        return isEmpty();
-    }
-
-    @Override
-    public @NotNull BlockEntity getContainerBlockEntity() {
-        return this;
     }
 
     public void drops() {
