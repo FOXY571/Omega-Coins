@@ -55,6 +55,6 @@ public class CoinPressRecipeCategory implements IRecipeCategory<CoinPressRecipe>
     @Override
     public void setRecipe(@NotNull IRecipeLayoutBuilder builder, @NotNull CoinPressRecipe recipe, @NotNull IFocusGroup focuses) {
         builder.addSlot(RecipeIngredientRole.INPUT, 1, 5).addIngredients(recipe.getIngredients().getFirst());
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 61, 5).addItemStack(recipe.getResultItem(null));
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 61, 5).addItemStack(recipe.output());
     }
 }
