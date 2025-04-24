@@ -55,7 +55,7 @@ public class CoinPressBlockEntity extends BlockEntity {
             return;
         }
 
-        itemHandler.setStackInSlot(0, recipe.get().value().output());
+        itemHandler.setStackInSlot(0, recipe.get().value().output().copy());
         level.playSound(null, getBlockPos(), SoundEvents.ANVIL_PLACE, SoundSource.BLOCKS);
         if (level instanceof ServerLevel serverLevel) {
             serverLevel.sendParticles(ParticleTypes.DUST_PLUME, getBlockPos().getX() + 0.5, getBlockPos().getY() + 1.2, getBlockPos().getZ() + 0.5, 7, 0.0, 0.0, 0.0, 0.0);
