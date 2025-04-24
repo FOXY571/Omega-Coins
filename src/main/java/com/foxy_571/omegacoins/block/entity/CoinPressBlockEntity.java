@@ -19,13 +19,14 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.ticks.ContainerSingleItem;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
-public class CoinPressBlockEntity extends BlockEntity {
+public class CoinPressBlockEntity extends BlockEntity implements ContainerSingleItem.BlockContainerSingleItem {
     public final ItemStackHandler itemHandler = new ItemStackHandler(1) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -72,6 +73,23 @@ public class CoinPressBlockEntity extends BlockEntity {
 
     public void setTheItem(@NotNull ItemStack itemStack) {
         itemHandler.setStackInSlot(0, itemStack);
+    }
+
+    @Override
+    public @NotNull ItemStack splitTheItem(int amount) {
+        ItemStack itemStack = itemHandler.getStackInSlot(0).split(amount);
+        callUpdated();
+        return itemStack;
+    }
+
+    @Override
+    public @NotNull BlockEntity getContainerBlockEntity() {
+        return this;
+    }
+
+    @Override
+    public boolean canPlaceItem(int slot, @NotNull ItemStack stack) {
+        return slot == 0 && itemHandler.getStackInSlot(0).isEmpty();
     }
 
     public void drops() {

@@ -67,18 +67,31 @@ public class CoinPressBlock extends BaseEntityBlock {
 
     @Override
     protected @NotNull BlockState updateShape(@NotNull BlockState state, @NotNull Direction direction, @NotNull BlockState neighborState, @NotNull LevelAccessor level, @NotNull BlockPos pos, @NotNull BlockPos neighborPos) {
-        if (!level.isClientSide()) {
-            if (direction == Direction.UP && neighborState.getBlock() instanceof PistonHeadBlock) {
-                if (neighborState.getValue(PistonHeadBlock.FACING) == Direction.DOWN) {
-                    BlockEntity blockEntity = level.getBlockEntity(pos);
-                    if (blockEntity instanceof CoinPressBlockEntity coinPressBlockEntity) {
-                        coinPressBlockEntity.craftItem();
-                    }
+        if (direction == Direction.UP && neighborState.getBlock() instanceof PistonHeadBlock) {
+            if (neighborState.getValue(PistonHeadBlock.FACING) == Direction.DOWN) {
+                BlockEntity blockEntity = level.getBlockEntity(pos);
+                if (blockEntity instanceof CoinPressBlockEntity coinPressBlockEntity) {
+                    coinPressBlockEntity.craftItem();
                 }
             }
         }
 
         return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
+    }
+
+    @Override
+    protected boolean hasAnalogOutputSignal(@NotNull BlockState state) {
+        return true;
+    }
+
+    @Override
+    protected int getAnalogOutputSignal(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos) {
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (blockEntity instanceof CoinPressBlockEntity coinPressBlockEntity) {
+            return coinPressBlockEntity.getTheItem().isEmpty() ? 0: 15;
+        }
+
+        return 0;
     }
 
     @Override
@@ -98,14 +111,17 @@ public class CoinPressBlock extends BaseEntityBlock {
         return RenderShape.MODEL;
     }
 
+    @Override
     protected @NotNull BlockState rotate(BlockState state, Rotation rotation) {
         return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
 
+    @Override
     protected @NotNull BlockState mirror(@NotNull BlockState state, Mirror mirror) {
         return rotate(state, mirror.getRotation(state.getValue(FACING)));
     }
 
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING);
     }
