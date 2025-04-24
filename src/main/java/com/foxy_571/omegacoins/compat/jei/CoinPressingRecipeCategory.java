@@ -1,4 +1,4 @@
-package com.foxy_571.omegacoins.compat;
+package com.foxy_571.omegacoins.compat.jei;
 
 import com.foxy_571.omegacoins.OmegaCoins;
 import com.foxy_571.omegacoins.block.ModBlocks;
