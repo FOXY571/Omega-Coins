@@ -12,5 +12,7 @@
   "block.omegacoins.netherite_coin_crate": "Netherite Coin Crate",
   "block.omegacoins.coin_press": "Coin Press",
 
-  "creativetab.omegacoins.omegacoins_tab": "Omega Coins"
+  "creativetab.omegacoins.omegacoins_tab": "Omega Coins",
+
+  "jei_title.omeagcoins.coin_pressing": "Coin Pressing"
 }
