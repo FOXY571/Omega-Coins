@@ -27,7 +27,7 @@ public class JEIOmegaCoinsPlugin implements IModPlugin {
 
     @Override
     public void registerCategories(@NotNull IRecipeCategoryRegistration registration) {
-        registration.addRecipeCategories(new CoinPressingRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new CoinPressRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -35,11 +35,11 @@ public class JEIOmegaCoinsPlugin implements IModPlugin {
         RecipeManager recipeManager = Minecraft.getInstance().level.getRecipeManager();
 
         List<CoinPressRecipe> coinPressRecipes = recipeManager.getAllRecipesFor(ModRecipes.COIN_PRESS_RECIPE_TYPE.get()).stream().map(RecipeHolder::value).toList();
-        registration.addRecipes(CoinPressingRecipeCategory.COIN_PRESS_RECIPE_TYPE, coinPressRecipes);
+        registration.addRecipes(CoinPressRecipeCategory.COIN_PRESS_RECIPE_TYPE, coinPressRecipes);
     }
 
     @Override
     public void registerRecipeCatalysts(@NotNull IRecipeCatalystRegistration registration) {
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.COIN_PRESS), CoinPressingRecipeCategory.COIN_PRESS_RECIPE_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.COIN_PRESS), CoinPressRecipeCategory.COIN_PRESS_RECIPE_TYPE);
     }
 }

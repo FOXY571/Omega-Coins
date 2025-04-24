@@ -17,7 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class CoinPressingRecipeCategory implements IRecipeCategory<CoinPressRecipe> {
+public class CoinPressRecipeCategory implements IRecipeCategory<CoinPressRecipe> {
     public static final ResourceLocation UID = ResourceLocation.fromNamespaceAndPath(OmegaCoins.MOD_ID, "coin_pressing");
     public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(OmegaCoins.MOD_ID, "textures/gui/jei/coin_press.png");
 
@@ -26,7 +26,7 @@ public class CoinPressingRecipeCategory implements IRecipeCategory<CoinPressReci
     private final IDrawable background;
     private final IDrawable icon;
 
-    public CoinPressingRecipeCategory(IGuiHelper helper) {
+    public CoinPressRecipeCategory(IGuiHelper helper) {
         background = helper.createDrawable(TEXTURE, 0, 0, 82, 26);
         icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.COIN_PRESS));
     }
